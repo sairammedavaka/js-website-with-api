@@ -41,27 +41,6 @@ const totalSumOfGenres = (genresArr) => {
       totalGenresContainerEl.appendChild(pEl);
     });
   }
-
-  // let newArr = [];
-
-  // for(let i = 0; i < arr.length; i++){
-
-  //   for(let j = 0; j < arr[i].genres.length; j++){
-
-  //     if(newArr.length){
-
-  //       if(newArr.some(item => arr[i].genres[j] === Object.keys(item)[0])){
-
-  //         const index = newArr.findIndex(index => arr[i].genres[j] === Object.keys(index)[0]);
-  //         newArr.splice(index, 1, { [arr[i].genres[j]] : newArr[index][arr[i].genres[j]] + 1});
-  //       } else {
-  //         newArr = [...newArr, { [arr[i].genres[j]] : 1 }];
-  //       }
-  //     } else {
-  //       newArr.push({ [arr[i].genres[j]] : 1 });
-  //     }
-  //   }
-  // }
 };
 
 // CREATING CARDS
