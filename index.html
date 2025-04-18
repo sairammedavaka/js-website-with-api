@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movies Collections</title>
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <!-- TOTAL GENRES -->
+    <div>
+      <h3 class="header-md">Total Genres:</h3>
+      <div class="total-genres-container"></div>
+    </div>
+
+    <!-- COLLECTIONS HEADER -->
+    <div class="header-container">
+      <h2 class="header-lg">Collections</h2>
+      <button type="button" id="asc" class="sort-button" data-name="collections">A - Z</button>
+      <button type="button" id="desc" class="sort-button" data-name="collections">Z - A</button>
+    </div>
+
+    <!-- COLLECTIONS -->
+    <div id="collections" class="collections-container">
+      <!-- DYNAMICALLY ADDING ELEMENTS -->
+    </div>
+
+    <!-- FAVORITES HEADER -->
+    <div class="header-container">
+      <h2 class="header-lg">Favorites</h2>
+      <button type="button" id="asc" class="sort-button" data-name="favorites">A - Z</button>
+      <button type="button" id="desc" class="sort-button" data-name="favorites">Z - A</button>
+    </div>
+
+    <!-- FAVORITES -->
+    <div id="favorites" class="favorites-container">
+      <!-- DYNAMICALLY ADDING ELEMENTS -->
+    </div>
+
+    <script src="./js/index.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/02a956eb8f.js" crossorigin="anonymous"></script>
+  </body>
+</html>

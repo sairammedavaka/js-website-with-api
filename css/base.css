@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 2rem 3rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h2,
+h3 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-top: 0;
+}
+
+.header-lg {
+  font-size: 2.5rem;
+  letter-spacing: -2px;
+  line-height: 1.05;
+}
+
+.header-md {
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.sub-header {
+  font-size: 0.8rem;
+}
+
+button {
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
