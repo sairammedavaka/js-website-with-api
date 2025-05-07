@@ -118,6 +118,12 @@
   .card-container {
     width: 48%;
     margin-right: 10px;
+    transition: none;
+  }
+
+  .card-container:hover {
+    transform: none;
+    z-index: 0;
   }
 
   .header-md {
