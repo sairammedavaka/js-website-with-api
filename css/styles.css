@@ -132,12 +132,13 @@
 
 @media (max-width: 650px) {
   .header-lg {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
 
   .card-container {
     width: 100%;
     margin-right: 0;
+    transition: none;
   }
 
   .header-md {
