@@ -9,34 +9,37 @@ const toFavsVar = "toFavs";
 
 // GENERATING TOTAL SUM OF GENRES
 const totalSumOfGenres = (genresArr) => {
-
   let newArr = [];
 
-  for(let i = 0; i < genresArr.length; i++){
-
-    for(let j = 0; j < genresArr[i].length; j++){
-
-      if(newArr.length){
-
-        if(newArr.some(item => genresArr[i][j] === Object.keys(item)[0])){
-
-          const index = newArr.findIndex(index => genresArr[i][j] === Object.keys(index)[0]);
-          newArr.splice(index, 1, { [genresArr[i][j]] : newArr[index][genresArr[i][j]] + 1});
+  for (let i = 0; i < genresArr.length; i++) {
+    for (let j = 0; j < genresArr[i].length; j++) {
+      if (newArr.length) {
+        if (newArr.some((item) => genresArr[i][j] === Object.keys(item)[0])) {
+          const index = newArr.findIndex(
+            (index) => genresArr[i][j] === Object.keys(index)[0]
+          );
+          newArr.splice(index, 1, {
+            [genresArr[i][j]]: newArr[index][genresArr[i][j]] + 1,
+          });
         } else {
-          newArr = [...newArr, { [genresArr[i][j]] : 1 }];
+          newArr = [...newArr, { [genresArr[i][j]]: 1 }];
         }
       } else {
-        newArr.push({ [genresArr[i][j]] : 1 });
+        newArr.push({ [genresArr[i][j]]: 1 });
       }
     }
   }
 
-  if(newArr.length){
-    const totalGenresContainerEl = document.querySelector(".total-genres-container");
+  if (newArr.length) {
+    const totalGenresContainerEl = document.querySelector(
+      ".total-genres-container"
+    );
 
-    newArr.forEach(item => {
+    newArr.forEach((item) => {
       const pEl = document.createElement("p");
-      pEl.textContent = `${Object.keys(item)[0]}: ${item[Object.keys(item)[0]]}`;
+      pEl.textContent = `${Object.keys(item)[0]}: ${
+        item[Object.keys(item)[0]]
+      }`;
       pEl.classList.add("sub-header", "total-genres-sub-header");
       totalGenresContainerEl.appendChild(pEl);
     });
@@ -96,7 +99,7 @@ const createCards = (data) => {
 
 // FETCHING MOVIES LIST USING API
 const getMoviesList = async () => {
-  const url = "https://imdb236.p.rapidapi.com/imdb/most-popular-movies";
+  const url = "https://imdb236.p.rapidapi.com/api/imdb/most-popular-tv";
   const options = {
     method: "GET",
     headers: {
@@ -112,11 +115,11 @@ const getMoviesList = async () => {
 
     if (result) {
       for (let i = 0; i < 30; i++) {
-        createCards({ 
-          id: result[i].id, 
-          primaryImage: result[i].primaryImage, 
-          primaryTitle: result[i].primaryTitle, 
-          description: result[i].description 
+        createCards({
+          id: result[i].id,
+          primaryImage: result[i].primaryImage,
+          primaryTitle: result[i].primaryTitle,
+          description: result[i].description,
         });
         genresArr.push(result[i].genres);
       }
@@ -131,11 +134,11 @@ getMoviesList();
 
 // UPDATING MOVIES TO RESPECTIVE SECTION
 const updateCollections = (element, direction) => {
-
-  const container = direction === toCollectVar ? collectionsContainerEl : favoritesContainerEl;
+  const container =
+    direction === toCollectVar ? collectionsContainerEl : favoritesContainerEl;
 
   const icon = element.querySelector("i");
-  if(direction === toCollectVar){
+  if (direction === toCollectVar) {
     icon.classList.replace("fa-solid", "fa-regular");
   } else {
     icon.classList.replace("fa-regular", "fa-solid");
@@ -148,8 +151,11 @@ const updateCollections = (element, direction) => {
 const addEventListenerToCardBtns = () => {
   const cardBtns = document.querySelectorAll(".card-button");
   cardBtns.forEach((btn) => {
-    btn.addEventListener('click', function () {
-      const direction = this.parentElement.parentElement.parentElement.id === collectionsVar ? toFavsVar : toCollectVar;
+    btn.addEventListener("click", function () {
+      const direction =
+        this.parentElement.parentElement.parentElement.id === collectionsVar
+          ? toFavsVar
+          : toCollectVar;
 
       updateCollections(this.parentElement.parentElement, direction);
     });
@@ -158,7 +164,10 @@ const addEventListenerToCardBtns = () => {
 
 // SORTING CARDS OF COLLECTIONS / FAVORITES
 const sortCards = (containerName, sortDir) => {
-  const container = containerName === collectionsVar ? collectionsContainerEl : favoritesContainerEl;
+  const container =
+    containerName === collectionsVar
+      ? collectionsContainerEl
+      : favoritesContainerEl;
 
   const childrensList = [];
 
@@ -169,12 +178,12 @@ const sortCards = (containerName, sortDir) => {
   childrensList.sort((a, b) => {
     const nameA = a.dataset.name[0].toLowerCase();
     const nameB = b.dataset.name[0].toLowerCase();
-    
-    if(sortDir === "asc" ? nameA < nameB : nameA > nameB){
+
+    if (sortDir === "asc" ? nameA < nameB : nameA > nameB) {
       return -1;
     }
 
-    if(sortDir === "asc" ? nameA > nameB : nameA < nameB){
+    if (sortDir === "asc" ? nameA > nameB : nameA < nameB) {
       return 1;
     }
 
@@ -182,13 +191,15 @@ const sortCards = (containerName, sortDir) => {
   });
 
   container.innerHTML = "";
-  childrensList.forEach(item => container.appendChild(item));
+  childrensList.forEach((item) => container.appendChild(item));
 };
 
 // EVENT LISTENERS TO SORT BTNS
 const buttons = document.querySelectorAll(".sort-button");
 buttons.forEach((btn) => {
   btn.addEventListener("click", function () {
-    this.dataset.name === collectionsVar ? sortCards(this.dataset.name, this.id) : sortCards(this.dataset.name, this.id);
+    this.dataset.name === collectionsVar
+      ? sortCards(this.dataset.name, this.id)
+      : sortCards(this.dataset.name, this.id);
   });
 });
